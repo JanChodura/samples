@@ -42,14 +42,7 @@ public class LinkedListEnhanced<E> {
          return;
       }
 
-      Node<E> previousFirst = first;
-
-      Node<E> newHead = new Node<E>();
-      newHead.setData(data);
-      newHead.setNext(previousFirst);
-
-      first = newHead;
-      size++;
+      insert(data, 1);
    }
 
    public void insert(E data, int id) {
@@ -64,10 +57,10 @@ public class LinkedListEnhanced<E> {
       Node<E> insertedNode = new Node<E>();
       insertedNode.setData(data);
       insertedNode.setNext(nextNode);
-
-      current.setNext(insertedNode);
-      if (id == 2) {
-         first = current;
+      if (id == 1) {
+         first = insertedNode;
+      } else {
+         current.setNext(insertedNode);
       }
 
       next();

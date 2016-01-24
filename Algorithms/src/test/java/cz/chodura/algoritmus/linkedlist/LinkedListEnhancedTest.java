@@ -36,22 +36,27 @@ public class LinkedListEnhancedTest {
    }
 
    @Test
-   public void testInsertHead() {
+   public void testInsertFirst() {
 
       list.insertFirst("Titty");
 
       assertEquals(5, list.size());
       assertEquals("Titty", list.getFirst());
    }
+   
 
    @Test
    public void testInsertSpecific() {
 
       list.insert("Titty", 2);
 
+      String previous = list.previous();
+      String next = list.next();
+         next = list.next();
+            
       assertEquals(5, list.size());
-      assertEquals("Susan", list.previous());
-      assertEquals("Titty", list.next());
+      assertEquals("Susan", previous);
+      assertEquals("Peggy", next);
    }
 
 }
