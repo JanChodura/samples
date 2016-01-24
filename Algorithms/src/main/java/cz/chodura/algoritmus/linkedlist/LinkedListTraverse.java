@@ -10,7 +10,8 @@ public class LinkedListTraverse<E> extends LinkedListSimple<E> {
    }
 
    /**
-    * Retrieves traversed order <b>only in string</b>. It uses recursion.
+    * Retrieves traversed order <b>only in string</b>. It uses recursion. Simpler code could be to
+    * reverse toString in StringBuilder.
     * 
     * @return
     */
@@ -39,4 +40,65 @@ public class LinkedListTraverse<E> extends LinkedListSimple<E> {
       return traversedOrder;
    }
 
+   public void traverse() {
+
+      current = first;
+
+      Node<E> previous = null;
+
+      while (current != null) {
+
+         Node<E> nextNode = current.getNext();
+         current.setNext(previous);
+
+         previous = current;
+         current = nextNode;
+      }
+
+      first = previous;
+
+   }
+
+   public void traverseRecursive() {
+
+      traverseRecursive(first);
+   }
+
+   /**
+    * Traverse from the node to end.
+    * 
+    * @param node
+    */
+   private void traverseRecursive(Node<E> node) {
+
+      Node<E> nextNode = node.getNext();
+      if (nextNode == null) {
+         
+         first = node;
+         return;
+      }
+
+      traverseRecursive(nextNode);
+      Node<E> previousNode = nextNode;
+      previousNode.setNext(node);
+      node.setNext(null);
+
+   }
+
+   public String toString() {
+
+      StringBuilder order = new StringBuilder();
+
+      Node<E> printedNode = first;
+
+      while (printedNode != null) {
+         order.append(DELIMITER);
+         order.append(printedNode.getData());
+         printedNode = printedNode.getNext();
+      }
+
+      order.delete(0, 1);
+
+      return order.toString();
+   }
 }
