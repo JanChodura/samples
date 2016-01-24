@@ -50,20 +50,25 @@ public class LinkedListEnhanced<E> {
       current = first;
       for (int i = 0; i < id - 1; i++) {
 
+         previous = current;
          current = current.getNext();
       }
 
-      Node<E> nextNode = current.getNext();
       Node<E> insertedNode = new Node<E>();
       insertedNode.setData(data);
-      insertedNode.setNext(nextNode);
-      if (id == 1) {
+      insertedNode.setNext(current);
+
+      boolean isHead = id == 1;
+      if (isHead) {
+
          first = insertedNode;
       } else {
-         current.setNext(insertedNode);
-      }
 
-      next();
+         previous.setNext(insertedNode);
+         Node<E> originalNode = current;
+         current = insertedNode;
+         current.setNext(originalNode);
+      }
 
       size++;
    }
@@ -87,11 +92,15 @@ public class LinkedListEnhanced<E> {
     */
    public E getLast() {
 
-      while (current.getNext() != null) {
-         current = current.getNext();
+      if (last == null) {
+         while (current.getNext() != null) {
+            current = current.getNext();
+         }
+         
+         last = current;
       }
 
-      return current.getData();
+      return last.getData();
    }
 
    public E get() {

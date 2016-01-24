@@ -55,8 +55,8 @@ public class LinkedListEnhancedTest {
          next = list.next();
             
       assertEquals(5, list.size());
-      assertEquals("Susan", previous);
-      assertEquals("Peggy", next);
+      assertEquals("John", previous);
+      assertEquals("Susan", next);
    }
 
 }
