@@ -5,6 +5,12 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
+/**
+ * Class only for measurment performance without asserts.
+ * 
+ * @author Jan Chodura
+ *
+ */
 public class LinkedListPerformanceTest {
 
 	@Test

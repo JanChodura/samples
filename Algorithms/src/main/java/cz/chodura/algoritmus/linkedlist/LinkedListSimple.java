@@ -9,9 +9,9 @@ package cz.chodura.algoritmus.linkedlist;
  */
 public class LinkedListSimple<E> {
 
-	private Node<E> first;
-	private Node<E> current;
-	private int size = 0;
+   protected Node<E> first;
+	protected Node<E> current;
+	protected int size = 0;
 
 	public void add(E e) {
 

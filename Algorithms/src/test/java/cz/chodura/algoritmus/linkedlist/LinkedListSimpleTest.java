@@ -8,12 +8,14 @@ public class LinkedListSimpleTest {
 
    @Test
    public void canAdd() {
-
+      
+      // Act
       LinkedListSimple<String> list = new LinkedListSimple<String>();
       list.add("John");
       list.add("Suzan");
       list.add("Peggy");
 
+      // Assert
       assertEquals(3, list.size());
       assertEquals("John", list.getFirst());
       assertEquals("John", list.get());
