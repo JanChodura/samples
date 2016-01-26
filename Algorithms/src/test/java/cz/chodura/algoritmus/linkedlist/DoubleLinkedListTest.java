@@ -31,12 +31,16 @@ public class DoubleLinkedListTest {
         // Act
         list.getFirst();
         String value = null;
-        while (!list.getLast().equals(value)) {
+        String lastName = list.getLast();
+        list.getFirst();
+        while (!lastName.equals(value)) {
             value = list.next();
         }
         
         String anotherValue = null;
-        while (!list.getFirst().equals(anotherValue)) {
+        String firstName = list.getFirst();
+        list.getLast();
+        while (!firstName.equals(anotherValue)) {
             anotherValue = list.previous();
         }
         
@@ -59,6 +63,29 @@ public class DoubleLinkedListTest {
         assertEquals("Roger", list.get());
         assertEquals("Susan", list.previous());
         assertEquals("Roger", list.next());
+    }
+    
+    
+    @Test
+    public void removeLastDataTest() {
+    
+        // Act
+        list.remove("Nancy");
+        
+        assertEquals(5, list.size());
+        assertEquals("Peggy", list.getLast());
+    }
+    
+    
+    @Test
+    public void removeUnexistDataTest() {
+    
+        // Arrange
+        
+        // Act
+        list.remove("Titty_Titty");
+        
+        assertEquals(6, list.size());
     }
     
 }

@@ -32,10 +32,12 @@ public class DoubleLinkedList<E> {
             current = first;
         } else {
             
-            current.setPrevious(last);
+            previous = last;
             last = newNode;
-            current.setNext(newNode);
             current = newNode;
+            previous.setNext(newNode);
+            current.setPrevious(previous);
+            current.setNext(null);
         }
         
         size++;
@@ -112,6 +114,8 @@ public class DoubleLinkedList<E> {
             last = current;
         }
         
+        current = last;
+        
         return last.getData();
     }
     
@@ -146,26 +150,57 @@ public class DoubleLinkedList<E> {
     }
     
     
+    /**
+     * Removes node. If there is no Node with data, it returns quite.
+     * 
+     * @param data
+     */
     public void remove(E data) {
+    
+        loop(data);
+        if (current == null) {
+            return;
+        }
+        
+        boolean isFirstRemoved = current.getPrevious() == null;
+        boolean isLastRemoved = current.getNext() == null;
+        if (isFirstRemoved) {
+            first = current.getNext();
+            current = first;
+            current.setData(null);
+        } else if (isLastRemoved) {
+            current = current.getPrevious();
+            last = current;
+            current.setNext(null);
+        } else {
+            
+            DoubleLinkNode<E> previous = current.getPrevious();
+            previous.setNext(current.getNext());
+            
+            current = current.getNext();
+            current.setPrevious(previous);
+        }
+        
+        size--;
+    }
+    
+    
+    /**
+     * Loop through {@link DoubleLinkedList} to Node with data value.
+     * 
+     * @param data
+     */
+    private void loop(E data) {
     
         current = first;
         
         while (current.getData() != data) {
-            previous = current;
+            
             current = current.getNext();
+            if (current == null) {
+                return;
+            }
         }
-        
-        boolean isHead = previous == null;
-        if (isHead) {
-            first = current.getNext();
-            current = first;
-        } else {
-            current = current.getNext();
-            current.setPrevious(previous);
-            previous.setNext(current);
-        }
-        
-        size--;
     }
     
     
