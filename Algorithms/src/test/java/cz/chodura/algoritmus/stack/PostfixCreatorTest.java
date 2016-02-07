@@ -6,16 +6,13 @@ import org.junit.Test;
 
 public class PostfixCreatorTest {
 
+   PostfixCreator creator = new PostfixCreator();
+
    @Test
    public void simpleTransform() {
 
-      PostfixCreator creator = new PostfixCreator();
-
-      // Arange
-      String infixExpression = "5+2*6";
-
       // Act
-      String postfixExpression = creator.transformFromInfix(infixExpression);
+      String postfixExpression = creator.transformFromInfix("5+2*6");
 
       // Assert
       assertEquals("526*+", postfixExpression);
