@@ -2,78 +2,75 @@ package cz.chodura.algoritmus.linkedlist;
 
 /**
  * Simple implementation of LinkedList. Only with a very neccesary methods.
- * 
- * @author Jan Chodura
- *
- * @param <E>
  */
 public class LinkedListSimple<E> {
 
    protected Node<E> first;
-	protected Node<E> current;
-	protected int size = 0;
+   protected Node<E> current;
+   protected int size = 0;
 
-	public void add(E e) {
+   public void add(E e) {
 
-		Node<E> newNode = new Node<E>();
-		newNode.setData(e);
+      Node<E> newNode = new Node<E>();
+      newNode.setData(e);
 
-		if (size == 0) {
+      if (size == 0) {
 
-			this.first = newNode;
-			this.current = this.first;
-		} else {
+         this.first = newNode;
+         this.current = this.first;
+      }
+      else {
 
-			this.current.setNext(newNode);
-			this.current = newNode;
-		}
+         this.current.setNext(newNode);
+         this.current = newNode;
+      }
 
-		size++;
-	}
+      size++;
+   }
 
-	/**
-	 * Method goes to begin of LinkedList
-	 * 
-	 * @return first element of Linked List
-	 */
-	public E getFirst() {
+   /**
+    * Method goes to begin of LinkedList
+    * 
+    * @return first element of Linked List
+    */
+   public E getFirst() {
 
-		this.current = this.first;
+      this.current = this.first;
 
-		return current.getData();
-	}
+      return current.getData();
+   }
 
-	/**
-	 * Method goes to end of LinkedList
-	 * 
-	 * @return last element of Linked List
-	 */
-	public E getLast() {
+   /**
+    * Method goes to end of LinkedList
+    * 
+    * @return last element of Linked List
+    */
+   public E getLast() {
 
-		while (this.current.getNext() != null) {
-			this.current = this.current.getNext();
-		}
+      while (this.current.getNext() != null) {
+         this.current = this.current.getNext();
+      }
 
-		return this.current.getData();
-	}
+      return this.current.getData();
+   }
 
-	public E get() {
+   public E get() {
 
-		return this.current.getData();
-	}
+      return this.current.getData();
+   }
 
-	public E next() {
+   public E next() {
 
-		if (this.current.getNext() == null) {
-			return null;
-		}
+      if (this.current.getNext() == null) {
+         return null;
+      }
 
-		this.current = this.current.getNext();
-		return this.current.getData();
-	}
+      this.current = this.current.getNext();
+      return this.current.getData();
+   }
 
-	public int size() {
+   public int size() {
 
-		return size;
-	}
+      return size;
+   }
 }
