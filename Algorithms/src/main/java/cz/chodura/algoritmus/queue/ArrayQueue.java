@@ -17,6 +17,7 @@ public class ArrayQueue<E> {
       this(DEFAULT_CAPACITY);
    }
 
+   @SuppressWarnings("unchecked")
    public ArrayQueue(int capacity) {
 
       queue = (E[]) new Object[capacity];
@@ -24,13 +25,6 @@ public class ArrayQueue<E> {
       N = capacity;
    }
 
-   /**
-    * 
-    * @author Jan Chodura
-    * @created 1. 2. 2016
-    *
-    * @param object if is Queue full nothing is filled.
-    */
    public void enqueue(E object) {
 
       if (isFull()) {
